@@ -1,8 +1,8 @@
 import React, { useState } from "react";
+
 export default function Login() {
   const [name, setName] = useState("");
   const [pass, setPassword] = useState();
-
   const item = localStorage.getItem("arraydata");
   function OnLogin() {
     const parsedItem = JSON.parse(item);
@@ -14,22 +14,14 @@ export default function Login() {
     console.log(checkedUser);
     if (checkedUser.name === name) {
       console.log("user found");
-      console.log(name);
-      console.log(pass);
     } else if (parsedItem.name === name && parsedItem.password !== pass) {
       console.log("Password is incorrect ");
-      console.log(name);
-      console.log(pass);
     } else if (parsedItem.name !== name && parsedItem.password === pass) {
       console.log("username is incorrect ");
-      console.log(name);
-      console.log(pass);
     } else if (parsedItem.name !== name && parsedItem.password !== pass) {
       console.log("reset username and password  ");
     } else {
       console.log("user not found");
-      console.log(name);
-      console.log(pass);
     }
   }
 
