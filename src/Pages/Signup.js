@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 
 const Signup = () => {
-  const id = new Date();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [pswd, setPswd] = useState("");
-  const [keyid, setKyeid] = useState(id);
+  const [keyid, setKyeid] = useState(new Date());
 
   function savedata() {
     const arraydata = JSON.parse(localStorage.getItem("arraydata") || "[]");
@@ -16,10 +15,11 @@ const Signup = () => {
       password: pswd,
     };
     arraydata.push(SaveInfo);
-
     localStorage.setItem("arraydata", JSON.stringify(arraydata));
+    setName("");
+    setEmail("");
+    setPswd("");
   }
-
   return (
     <>
       <div className="w-96 mx-auto bg-gray-100 mt-20 py-10">
@@ -52,6 +52,7 @@ const Signup = () => {
           />
         </div>
         <button
+          type="submit"
           onClick={savedata}
           className="border-2 border-black px-2 block m-auto"
         >
